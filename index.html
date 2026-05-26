@@ -207,6 +207,8 @@
       opacity: 0.68;
     }
 
+    .hero-photo-mobile { display: none; }
+
     .hero-wash {
       position: absolute;
       inset: auto 0 0 0;
@@ -395,10 +397,24 @@
     }
 
     .label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: var(--gold-light);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
-      margin-bottom: 18px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .label::before {
+      content: "";
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light));
+      flex-shrink: 0;
     }
 
     h2 {
@@ -2366,38 +2382,56 @@
       .topline-inner { padding: 10px 14px; }
       .brand span, .topline .btn { display: none; }
       .brand img { height: 58px; }
+      /* Poster Split: photo on top, text below */
       .hero {
-        min-height: 800px;
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 100svh;
       }
-      .hero::before {
-        background-image: url("Hero Section Mobile.png");
-        background-position: center top;
-      }
+      .hero::before { display: none; }
       .hero::after {
-        background:
-          linear-gradient(180deg, rgba(2, 3, 10, 0.14) 0%, rgba(2, 3, 10, 0.54) 42%, rgba(2, 3, 10, 0.98) 100%),
-          linear-gradient(90deg, rgba(2, 3, 10, 0.9), rgba(2, 3, 10, 0.28));
+        top: 45%;
+        background: linear-gradient(180deg,
+          rgba(2, 3, 10, 0) 0%,
+          rgba(2, 3, 10, 0.92) 18%,
+          rgba(2, 3, 10, 0.99) 100%
+        );
       }
-      .hero-inner { padding: 120px 16px 34px; }
-      h1 { font-size: clamp(40px, 12vw, 58px); }
+      .hero-photo-mobile {
+        display: block;
+        flex: 0 0 48svh;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero-photo-mobile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 15%;
+      }
+      .hero-photo-mobile::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 55%;
+        background: linear-gradient(180deg, transparent, rgba(2, 3, 10, 0.97));
+        pointer-events: none;
+      }
+      .hero-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 0 16px 32px;
+        gap: 0;
+      }
+      .hero-proof, .hero-proof-strip { display: none; }
+      h1 { font-size: clamp(36px, 11vw, 54px); }
       h2 { font-size: clamp(32px, 11vw, 48px); }
-      .hero-sub { font-size: 17px; }
+      .hero-sub { font-size: 16px; margin-top: 12px; }
+      .hero-actions { margin-top: 18px; }
       .hero-actions .btn { width: 100%; }
-      .hero-panel { padding: 20px; }
-      .hero-panel strong { font-size: 28px; }
-      .panel-meta { grid-template-columns: 1fr; gap: 10px; }
-      .panel-meta span,
-      .panel-meta span + span {
-        border-left: 0;
-        padding-left: 0;
-        padding-right: 0;
-      }
-      .hero-proof-strip {
-        grid-template-columns: 1fr 1fr;
-        margin-top: 14px;
-      }
-      .hero-proof-strip span:nth-child(2) { border-right: 0; }
-      .hero-proof-strip span:nth-child(-n+2) { border-bottom: 1px solid rgba(246, 210, 122, 0.12); }
+      .hero-trust { margin-top: 8px; }
       .diagnosis::before {
         top: 22%;
         font-size: 82px;
@@ -2567,17 +2601,20 @@
 
   <main id="top">
     <section class="hero" aria-label="Apresentação">
+      <div class="hero-photo-mobile" aria-hidden="true">
+        <img src="Hero Section Mobile.png" alt="" />
+      </div>
       <div class="hero-wash" aria-hidden="true"></div>
       <div class="hero-light" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-copy">
-          <div class="eyebrow reveal">CO_NÉCTAR — DE VOLTA À ESSÊNCIA · 13 JUNHO 2026 · PORTO INOVA</div>
+          <div class="eyebrow reveal">CO_NÉCTAR · DE VOLTA À ESSÊNCIA · 13 JUNHO 2026 · PORTO INOVA</div>
           <h1 class="reveal">Por fora, está tudo a funcionar. <span class="hero-title-mark">Por dentro, tu sabes que paraste de crescer.</span></h1>
           <p class="hero-sub reveal">
-            No dia 13 de junho, no Porto, 7 mentores reúnem-se por um dia inteiro para te tirar do piloto automático — e te devolver a versão de ti que ficou para trás.
+            No dia 13 de junho, no Porto, 7 mentores reúnem-se por um dia inteiro para te tirar do piloto automático e te devolver a versão de ti que ficou para trás.
           </p>
           <div class="hero-actions reveal">
-            <a class="btn" href="#bilhetes">Quero o meu lugar — €38
+            <a class="btn" href="#bilhetes">Quero o meu lugar · €38
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
             <a class="btn btn-secondary" href="#mentores">Ver os mentores</a>
@@ -2611,7 +2648,7 @@
           <div class="label">Tu não chegaste aqui por acaso</div>
           <h2>Por fora, está tudo a funcionar. <span>Por dentro, tu sabes que paraste de crescer.</span></h2>
           <p class="section-lead">
-            Existem dois tipos de ambiente neste mundo. Os que te <em>motivam</em> — aquela energia que dura até segunda-feira de manhã, até o despertador tocar e a vida real voltar ao centro. E os que te <em>despertam</em> — os que mexem em algo lá dentro que tu já tinhas esquecido que existia. O CO_NÉCTAR é do segundo tipo.
+            Existem dois tipos de ambiente neste mundo. Os que te <em>motivam</em>: aquela energia que dura até segunda-feira de manhã, até o despertador tocar e a vida real voltar ao centro. E os que te <em>despertam</em>: os que mexem em algo lá dentro que tu já tinhas esquecido que existia. O CO_NÉCTAR é do segundo tipo.
           </p>
           <p class="section-lead">
             Não é falta de capacidade. <strong>Tu já provaste que és capaz.</strong> É que ninguém te ensinou a <strong>voltar a ti.</strong> E é exatamente isso que vai acontecer no dia 13 de junho.
@@ -2624,8 +2661,8 @@
             <strong>Começaste tudo. Terminaste quase nada. E o melhor de ti ainda não saiu.</strong>
           </div>
           <div class="check"><b>1</b><div><strong>Projetos com fogo nos olhos.</strong><span>Que hoje acumulam pó numa gaveta.</span></div></div>
-          <div class="check"><b>2</b><div><strong>Uma versão de ti prometida.</strong><span>Que prometeste que ias ser — e que ainda não apareceu.</span></div></div>
-          <div class="check"><b>3</b><div><strong>Dias iguais em loop.</strong><span>Acordas, produzes, dormes e repetes — sem saberes muito bem porquê.</span></div></div>
+          <div class="check"><b>2</b><div><strong>Uma versão de ti prometida.</strong><span>Que prometeste que ias ser, e que ainda não apareceu.</span></div></div>
+          <div class="check"><b>3</b><div><strong>Dias iguais em loop.</strong><span>Acordas, produzes, dormes e repetes, sem saberes muito bem porquê.</span></div></div>
           <div class="check"><b>4</b><div><strong>"Isto não pode ser tudo."</strong><span>Aquela voz, no silêncio. Tu sabes de que estamos a falar.</span></div></div>
         </div>
       </div>
@@ -2649,7 +2686,7 @@
               Sem atalhos.
             </h2>
             <p class="method-sub reveal">
-              Não vais ouvir teoria que se esquece na semana seguinte. Vais atravessar um processo: confrontar o que te trava, reencontrar o que te move, e sair com clareza do próximo passo concreto — não "um dia", mas no dia seguinte.
+              Não vais ouvir teoria que se esquece na semana seguinte. Vais atravessar um processo: confrontar o que te trava, reencontrar o que te move, e sair com clareza do próximo passo concreto, não "um dia", mas no dia seguinte.
             </p>
             <div class="method-steps">
               <article class="method-step reveal" data-step="01">
@@ -2675,7 +2712,7 @@
                   </div>
                   <h3>Reconstruir o centro.</h3>
                   <p>Reconectas com o que realmente importa: a tua essência, o teu propósito, a identidade que ficou sepultada debaixo das expectativas dos outros e do peso do dia a dia.</p>
-                  <span class="method-step-out">Sais a saber quem és — de verdade.</span>
+                  <span class="method-step-out">Sais a saber quem és, de verdade.</span>
                 </div>
               </article>
               <article class="method-step reveal" data-step="03">
@@ -2687,7 +2724,7 @@
                     </div>
                   </div>
                   <h3>Decidir e agir.</h3>
-                  <p>Não vais embora com "ideias para pensar". Vais com um plano concreto e com a energia para o executar — não daqui a um mês. Amanhã.</p>
+                  <p>Não vais embora com "ideias para pensar". Vais com um plano concreto e com a energia para o executar. Não daqui a um mês. Amanhã.</p>
                   <span class="method-step-out">Sais com o próximo passo. E a coragem de o dar.</span>
                 </div>
               </article>
@@ -2707,7 +2744,7 @@
               <div class="method-bracket method-bracket-bl" aria-hidden="true"></div>
               <div class="method-bracket method-bracket-br" aria-hidden="true"></div>
               <figure class="method-art">
-                <img src="img triangulo fundo preto.png" alt="O Método CO_NÉCTAR: Confrontar, Reconstruir e Decidir — Clareza em Ação." width="926" height="824" loading="lazy" decoding="async" />
+                <img src="img triangulo fundo preto.png" alt="O Método CO_NÉCTAR: Confrontar, Reconstruir e Decidir. Clareza em Ação." width="926" height="824" loading="lazy" decoding="async" />
               </figure>
               <span class="method-spark" style="top:6%;left:42%;animation-delay:0s" aria-hidden="true"></span>
               <span class="method-spark" style="top:38%;left:2%;animation-delay:1.3s" aria-hidden="true"></span>
@@ -2724,17 +2761,17 @@
     <section class="audience" id="para-quem">
       <div class="container">
         <div class="label reveal">Para quem é este dia</div>
-        <h2 class="reveal" style="margin-bottom:48px;">Este dia é para ti — ou não é.</h2>
+        <h2 class="reveal" style="margin-bottom:48px;">Este dia é para ti. Ou não é.</h2>
         <div class="audience-grid">
           <div class="audience-yes reveal">
             <div class="label">Este dia é para ti se…</div>
             <ul class="audience-list">
               <li>Sabes que tens mais dentro de ti do que aquilo que tens mostrado ao mundo.</li>
-              <li>Estás cansado de começar — e cansado de não terminar.</li>
+              <li>Estás cansado de começar, e cansado de não terminar.</li>
               <li>Queres largar o que te acomodou. Mesmo que doa.</li>
-              <li>Estás pronto para reencontrar o teu caminho — não daqui a um ano, mas agora.</li>
+              <li>Estás pronto para reencontrar o teu caminho, não daqui a um ano, mas agora.</li>
               <li>Sentes que algo dentro de ti ainda não pode morrer.</li>
-              <li>Queres estar numa sala cheia de pessoas que <strong>decidiram</strong> mudar — não que só falam disso.</li>
+              <li>Queres estar numa sala cheia de pessoas que <strong>decidiram</strong> mudar, não que só falam disso.</li>
             </ul>
           </div>
           <div class="audience-no reveal">
@@ -2745,7 +2782,7 @@
               <li>Estás confortável onde estás e não queres ser confrontado.</li>
             </ul>
             <blockquote class="audience-quote">
-              <p>A entrada é de €38 — não porque vale pouco, mas porque o que pedimos de ti não é dinheiro. É presença e decisão.</p>
+              <p>A entrada é de €38, não porque vale pouco, mas porque o que pedimos de ti não é dinheiro. É presença e decisão.</p>
             </blockquote>
           </div>
         </div>
@@ -2762,15 +2799,15 @@
         <div class="program-head">
           <div>
             <div class="label reveal">A experiência</div>
-            <h2 class="reveal">Das 09h às 18h — um dia inteiro desenhado para te tirar do modo automático.</h2>
+            <h2 class="reveal">Das 09h às 18h. Um dia inteiro desenhado para te tirar do modo automático.</h2>
             <p class="section-lead reveal">
-              Não é um seminário onde ouves e vais embora. É um ambiente onde <strong>te ativas</strong> — e onde a rede de pessoas certas pode mudar não só o teu dia, mas o teu próximo ano.
+              Não é um seminário onde ouves e vais embora. É um ambiente onde <strong>te ativas</strong>, e onde a rede de pessoas certas pode mudar não só o teu dia, mas o teu próximo ano.
             </p>
           </div>
           <aside class="program-card reveal" aria-label="Resumo da experiência">
             <small>Jornada presencial</small>
             <strong>1 dia. 3 movimentos.<br>Um plano para voltar a agir.</strong>
-            <span>Não é um seminário onde ouves e vais embora. É uma travessia — confrontar o que trava, reconstruir o centro, decidir o próximo passo.</span>
+            <span>Não é um seminário onde ouves e vais embora. É uma travessia: confrontar o que trava, reconstruir o centro, decidir o próximo passo.</span>
             <dl>
               <div><dt>Data</dt><dd>13 Jun 2026</dd></div>
               <div><dt>Local</dt><dd>Porto Inova</dd></div>
@@ -2800,7 +2837,7 @@
             </div>
             <div class="time-outcome">
               <div class="time-outcome-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span class="time-outcome-text">Sais sabendo exatamente o que está entre ti e a próxima versão de ti — e com o nome de cada obstáculo.</span>
+              <span class="time-outcome-text">Sais sabendo exatamente o que está entre ti e a próxima versão de ti, com o nome de cada obstáculo.</span>
             </div>
           </article>
 
@@ -2818,7 +2855,7 @@
             </div>
             <div class="time-outcome">
               <div class="time-outcome-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span class="time-outcome-text">Sais a saber quem és — de verdade. Não quem o mundo pediu que fosses.</span>
+              <span class="time-outcome-text">Sais a saber quem és, de verdade. Não quem o mundo pediu que fosses.</span>
             </div>
           </article>
 
@@ -2832,7 +2869,7 @@
             <div class="time-body">
               <div class="time-top"><small>16h30 – 18h</small><span>Final de Dia</span></div>
               <h3>Decidir</h3>
-              <p>Não vais embora com "ideias para pensar". Vais com um plano concreto e com a energia para o executar — não daqui a um mês. Amanhã.</p>
+              <p>Não vais embora com "ideias para pensar". Vais com um plano concreto e com a energia para o executar. Não daqui a um mês. Amanhã.</p>
             </div>
             <div class="time-outcome">
               <div class="time-outcome-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -2862,7 +2899,7 @@
             <div class="speaker-body">
               <small>Raphael Rocha · @rocharaphaelpt</small>
               <h3>A trajetória que dá peso à sala.</h3>
-              <p>CEO do Grupo Rocha Automóveis — 6 lojas, 57 colaboradores, Top 5 que mais venderam em Portugal (2022 e 2023). IRONMAN 2025. Escritor. De entregador de caminhões a líder de um grupo de referência nacional.</p>
+              <p>CEO do Grupo Rocha Automóveis, 6 lojas, 57 colaboradores, Top 5 que mais venderam em Portugal (2022 e 2023). IRONMAN 2025. Escritor. De entregador de caminhões a líder de um grupo de referência nacional.</p>
             </div>
           </article>
           <article class="speaker reveal">
@@ -2913,7 +2950,7 @@
             <div class="label reveal">Não é um currículo. É uma vida.</div>
             <h2 class="reveal">Não é teoria de palco. É vida construída, testada e colocada em movimento.</h2>
             <p class="section-lead reveal">
-              Eu cheguei a Portugal com 20 e poucos anos, uma mochila e uma decisão: a minha vida ia ser diferente. Comecei nas entregas. Passei pelos caminhões. Trabalhei horas que ninguém via, em dias que ninguém aplaudia. <strong>Atravessei o oceano sem saber exatamente o que ia encontrar do outro lado — só sabia que não ia voltar atrás.</strong>
+              Eu cheguei a Portugal com 20 e poucos anos, uma mochila e uma decisão: a minha vida ia ser diferente. Comecei nas entregas. Passei pelos caminhões. Trabalhei horas que ninguém via, em dias que ninguém aplaudia. <strong>Atravessei o oceano sem saber exatamente o que ia encontrar do outro lado, só sabia que não ia voltar atrás.</strong>
             </p>
             <p class="section-lead reveal">
               E havia uma coisa que me movia, mesmo nos dias mais difíceis: eu não ia parar até construir algo que tivesse orgulho de mostrar aos meus filhos.
@@ -2921,8 +2958,8 @@
             <p class="section-lead reveal">
               Hoje lidero um grupo com 6 lojas e 57 pessoas. Completei um IRONMAN. Tenho família, fé, e uma vida que o rapaz das entregas nem se atrevia a sonhar. Mas não te conto isto para te impressionar. Conto-te porque <strong>tudo isto só foi possível porque, um dia, decidi vencer a mim mesmo primeiro. Porque só vence quem se vence.</strong>
             </p>
-            <p class="section-lead reveal">O CO_NÉCTAR é onde eu te estendo a mão para essa mesma jornada. Não de cima de um palco. De dentro de quem já caminhou o caminho. Se também estás nessa jornada — bem-vindo. É aqui que a conversa acontece.</p>
-            <div class="proof-signature reveal">— Raphael Rocha</div>
+            <p class="section-lead reveal">O CO_NÉCTAR é onde eu te estendo a mão para essa mesma jornada. Não de cima de um palco. De dentro de quem já caminhou o caminho. Se também estás nessa jornada. Bem-vindo. É aqui que a conversa acontece.</p>
+            <div class="proof-signature reveal">Raphael Rocha</div>
           </div>
         </div>
         <div class="proof-grid">
@@ -3004,17 +3041,17 @@
         <div class="label reveal">Lote fundador</div>
         <h2 class="reveal">A entrada é €38. O custo real é continuares a adiar.</h2>
         <p class="section-lead reveal">
-          Num único dia, sais a saber exatamente quem és, o que queres — e o próximo passo concreto para finalmente começar o que não tens parado de adiar.
+          Num único dia, sais a saber exatamente quem és, o que queres, e o próximo passo concreto para finalmente começar o que não tens parado de adiar.
         </p>
         <p class="section-lead reveal" style="margin-bottom:2rem;">
           Não é uma promessa. É o que 7 pessoas que já viveram o caminho vão fazer contigo, das 9h às 18h, no dia 13 de junho.
         </p>
         <div class="offer-layout">
           <div class="value-list reveal">
-            <div class="value-row"><span><strong><svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1 1 1 0 0 0 0 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1a1 1 0 0 1 1-1 1 1 0 0 0 0-2 1 1 0 0 1-1-1V9Z"/><path d="M9 7v10M15 7v10" stroke-dasharray="2 2"/></svg>Imersão CO_NÉCTAR — Dia Completo</strong><br />Das 9h às 18h. 7 mentores. Porto Inova, 13 de junho. Um ambiente construído para te tirar do automático — não por uma hora, mas de vez.</span><span class="value-price">€297</span></div>
+            <div class="value-row"><span><strong><svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 9a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1 1 1 0 0 0 0 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-1a1 1 0 0 1 1-1 1 1 0 0 0 0-2 1 1 0 0 1-1-1V9Z"/><path d="M9 7v10M15 7v10" stroke-dasharray="2 2"/></svg>Imersão CO_NÉCTAR · Dia Completo</strong><br />Das 9h às 18h. 7 mentores. Porto Inova, 13 de junho. Um ambiente construído para te tirar do automático, não por uma hora, mas de vez.</span><span class="value-price">€297</span></div>
             <div class="value-row"><span><strong><svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>Workbook "Essência em Ação"</strong><br />Um caderno guiado que preenches ao vivo, secção a secção. Sais com o plano já escrito, não com notas avulsas.</span><span class="value-price">€47</span></div>
             <div class="value-row"><span><strong><svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>Regravação dos Momentos-Chave</strong><br />Acesso aos conteúdos mais transformadores do dia. Para quando a rotina tentar voltar, tens o conteúdo ali.</span><span class="value-price">€97</span></div>
-            <div class="value-row"><span><strong><svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Comunidade Néctar — 3 Meses</strong><br />Rede ativa de pessoas que fizeram o mesmo processo. A sala não fecha no dia 13.</span><span class="value-price">€147</span></div>
+            <div class="value-row"><span><strong><svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Comunidade Néctar · 3 Meses</strong><br />Rede ativa de pessoas que fizeram o mesmo processo. A sala não fecha no dia 13.</span><span class="value-price">€147</span></div>
             <div class="value-row"><span><strong><svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>Plano dos 30 Dias Pós-Evento</strong><br />Roteiro semana a semana para os 30 dias seguintes. Desta vez tens um mapa.</span><span class="value-price">€47</span></div>
             <div class="value-row value-row-total"><span><strong>Valor total que estás a receber</strong></span><span class="value-price value-total">~€635</span></div>
             <div class="value-row value-row-cta"><span><strong>O teu investimento hoje</strong></span><span class="value-price value-cta-price">€38</span></div>
@@ -3041,43 +3078,43 @@
         <div class="faq-list">
           <details class="reveal">
             <summary><span>"Isto vai ser só motivação que esqueço na segunda-feira?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Entendo essa preocupação — já foste a eventos que prometeram muito e entregaram pouco. Este é diferente: sais com um workbook preenchido e um plano concreto para os 30 dias seguintes. O objetivo não é sentires-te bem por umas horas. É decidires e agires.</p></div>
+            <div><p>Entendo essa preocupação: já foste a eventos que prometeram muito e entregaram pouco. Este é diferente: sais com um workbook preenchido e um plano concreto para os 30 dias seguintes. O objetivo não é sentires-te bem por umas horas. É decidires e agires.</p></div>
           </details>
           <details class="reveal">
             <summary><span>"Não conheço os mentores. Porque devo confiar?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Faz sentido quereres saber com quem estás a entrar. Nenhum deles fala do alto de um pedestal — são pessoas que construíram, caíram e reconstruíram. E a trajetória do Raphael, de entregador de caminhões a CEO de 6 lojas entre as Top 5 de Portugal, já responde à pergunta.</p></div>
+            <div><p>Faz sentido quereres saber com quem estás a entrar. Nenhum deles fala do alto de um pedestal, são pessoas que construíram, caíram e reconstruíram. E a trajetória do Raphael, de entregador de caminhões a CEO de 6 lojas entre as Top 5 de Portugal, já responde à pergunta.</p></div>
           </details>
           <details class="reveal">
-            <summary><span>"€38 por um dia inteiro com 7 mentores — qual é a pegadinha?"</span><span class="faq-toggle">+</span></summary>
+            <summary><span>"€38 por um dia inteiro com 7 mentores. Qual é a pegadinha?"</span><span class="faq-toggle">+</span></summary>
             <div><p>Nenhuma. O preço é acessível de propósito: queremos a sala cheia das pessoas certas, não que o dinheiro seja a barreira. O que pedimos de ti é presença e decisão.</p></div>
           </details>
           <details class="reveal">
             <summary><span>"E se eu não gostar?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Tens a Garantia Essência: se até ao almoço não achares que valeu cada cêntimo, a nossa equipa devolve-te tudo na hora — e ainda ficas com o workbook e o Plano dos 30 Dias. Não tens absolutamente nada a perder em aparecer.</p></div>
+            <div><p>Tens a Garantia Essência: se até ao almoço não achares que valeu cada cêntimo, a nossa equipa devolve-te tudo na hora, e ainda ficas com o workbook e o Plano dos 30 Dias. Não tens absolutamente nada a perder em aparecer.</p></div>
           </details>
           <details class="reveal">
-            <summary><span>"Vou sozinho — e se não conhecer ninguém?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Ótimo — vais sair com uma rede nova. Há dinâmica de networking estruturada e acesso à Comunidade Néctar antes e depois do evento.</p></div>
+            <summary><span>"Vou sozinho. E se não conhecer ninguém?"</span><span class="faq-toggle">+</span></summary>
+            <div><p>Ótimo. Vais sair com uma rede nova. Há dinâmica de networking estruturada e acesso à Comunidade Néctar antes e depois do evento.</p></div>
           </details>
           <details class="reveal">
             <summary><span>"Vai haver venda de alguma coisa no dia?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>O dia entrega valor completo por si só. Se ao longo dele fizer sentido dares um próximo passo connosco, vais saber — sem pressão nenhuma. Sais transformado de qualquer forma.</p></div>
+            <div><p>O dia entrega valor completo por si só. Se ao longo dele fizer sentido dares um próximo passo connosco, vais saber, sem pressão nenhuma. Sais transformado de qualquer forma.</p></div>
           </details>
           <details class="reveal">
             <summary><span>"Posso levar alguém?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Sim — e recomendamos. Partilhar o dia com alguém próximo multiplica o impacto. Cada pessoa garante o seu bilhete individualmente.</p></div>
+            <div><p>Sim, e recomendamos. Partilhar o dia com alguém próximo multiplica o impacto. Cada pessoa garante o seu bilhete individualmente.</p></div>
           </details>
           <details class="reveal">
             <summary><span>"Já fui a eventos assim e não resultou. Porque seria diferente?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Porque a maioria dos eventos entretém. O CO_NÉCTAR ativa. Sais com um plano escrito — não com um post para o Instagram.</p></div>
+            <div><p>Porque a maioria dos eventos entretém. O CO_NÉCTAR ativa. Sais com um plano escrito, não com um post para o Instagram.</p></div>
           </details>
           <details class="reveal">
             <summary><span>"Como funciona o pagamento?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Por cartão de crédito ou débito — pagamento 100% seguro. Recebes confirmação imediata por email com todos os detalhes do evento.</p></div>
+            <div><p>Por cartão de crédito ou débito. Pagamento 100% seguro. Recebes confirmação imediata por email com todos os detalhes do evento.</p></div>
           </details>
           <details class="reveal">
             <summary><span>"Onde é e como chego?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Porto Inova — Centro Empresarial, Porto. Dia 13 de junho de 2026, das 09h às 18h. Estacionamento disponível no local.</p></div>
+            <div><p>Porto Inova, Centro Empresarial, Porto. Dia 13 de junho de 2026, das 09h às 18h. Estacionamento disponível no local.</p></div>
           </details>
         </div>
       </div>
@@ -3087,10 +3124,10 @@
       <div class="final-inner">
         <div>
           <div class="label reveal">Urgência + Decisão</div>
-          <h2 class="reveal">As vagas estão a desaparecer. E não é estratégia — é a capacidade real da sala.</h2>
+          <h2 class="reveal">As vagas estão a desaparecer. E não é estratégia, é a capacidade real da sala.</h2>
           <p class="section-lead reveal">Depois deste dia, vais olhar para trás e dividir a tua vida em dois: o antes e o depois do 13 de junho.</p>
           <p class="section-lead reveal" style="margin-top:1rem;">A única pergunta que importa agora é:</p>
-          <h3 class="reveal" style="font-size:clamp(1.25rem,2.4vw,1.75rem);color:var(--gold-light);margin:1.5rem 0;font-weight:800;line-height:1.2;">Tu vais assistir de fora — ou viver isto connosco?</h3>
+          <h3 class="reveal" style="font-size:clamp(1.25rem,2.4vw,1.75rem);color:var(--gold-light);margin:1.5rem 0;font-weight:800;line-height:1.2;">Tu vais assistir de fora, ou viver isto connosco?</h3>
           <div class="hero-actions reveal">
             <a class="btn" href="#bilhetes">Sim, eu decido. Quero o meu lugar
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -3111,7 +3148,7 @@
     <section class="ps-section" aria-label="P.S.">
       <div class="container">
         <p class="ps-text reveal">
-          <strong>P.S.</strong> — Alguns vão ler isto tudo, sentir o "sim" lá dentro… e mesmo assim não decidir. Sem problema — a vida continua igual para quem escolhe que continue igual. Mas aqueles que decidirem hoje vão saber exatamente porquê no dia 13. <strong>Decisão hoje. Resultado: 13 de junho.</strong>
+          <strong>P.S.</strong> Alguns vão ler isto tudo, sentir o "sim" lá dentro… e mesmo assim não decidir. Sem problema, a vida continua igual para quem escolhe que continue igual. Mas aqueles que decidirem hoje vão saber exatamente porquê no dia 13. <strong>Decisão hoje. Resultado: 13 de junho.</strong>
         </p>
       </div>
     </section>
