@@ -2371,8 +2371,7 @@
     }
 
     @media (max-width: 680px) {
-      /* Fix 1+2: Mobile CTA visible + safe-area notch support */
-      body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+      body { padding-bottom: 0; }
       .topline-inner { padding: 10px 14px; }
       .brand span, .topline .btn { display: none; }
       .brand img { height: 58px; }
@@ -2547,13 +2546,7 @@
         gap: 6px;
       }
 
-      /* Fix 1: Show mobile CTA bar + safe area */
-      .mobile-cta {
-        display: block;
-        padding: 10px 14px;
-        padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
-      }
-      .mobile-cta .btn { width: 100%; }
+      .mobile-cta { display: none; }
     }
   </style>
   <script type="application/ld+json">
