@@ -215,10 +215,10 @@
       width: 100%;
       max-width: var(--max);
       margin: 0 auto;
-      padding: 96px 20px 42px;
+      padding: 68px 20px 32px;
       display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.58fr);
-      gap: 56px;
+      grid-template-columns: minmax(0, 0.92fr) minmax(300px, 0.52fr);
+      gap: 44px;
       align-items: end;
     }
 
@@ -231,7 +231,7 @@
       color: var(--gold-light);
       font-size: 12px;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     .eyebrow::before {
@@ -245,7 +245,7 @@
 
     h1 {
       font-family: Sora, Inter, sans-serif;
-      font-size: clamp(46px, 5.1vw, 68px);
+      font-size: clamp(38px, 3.6vw, 56px);
       line-height: 1.02;
       font-weight: 800;
       color: #fff;
@@ -259,10 +259,10 @@
     }
 
     .hero-sub {
-      margin-top: 26px;
+      margin-top: 16px;
       max-width: 570px;
       color: rgba(248, 244, 235, 0.82);
-      font-size: clamp(18px, 2vw, 22px);
+      font-size: clamp(16px, 1.5vw, 19px);
       line-height: 1.55;
     }
 
@@ -273,11 +273,11 @@
       flex-wrap: wrap;
       align-items: center;
       gap: 14px;
-      margin-top: 34px;
+      margin-top: 20px;
     }
 
     .hero-trust {
-      margin-top: 18px;
+      margin-top: 10px;
       color: rgba(248, 244, 235, 0.66);
       font-size: 13px;
       font-weight: 700;
@@ -357,14 +357,14 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0;
-      margin-top: 34px;
+      margin-top: 18px;
       border-top: 1px solid rgba(246, 210, 122, 0.2);
       border-bottom: 1px solid rgba(246, 210, 122, 0.13);
       background: linear-gradient(90deg, transparent, rgba(246, 210, 122, 0.045), transparent);
     }
 
     .hero-proof-strip span {
-      padding: 14px 18px;
+      padding: 11px 18px;
       color: rgba(248, 244, 235, 0.62);
       font-size: 12px;
       font-weight: 800;
@@ -1080,52 +1080,6 @@
       font-weight: 700;
     }
 
-    .audience-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 48px;
-    }
-
-    .audience {
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      padding: 30px;
-      background: rgba(16, 19, 25, 0.68);
-    }
-
-    .audience h3 {
-      font: 800 24px/1.2 Sora, Inter, sans-serif;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-
-    .audience ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 14px;
-      color: var(--soft);
-    }
-
-    .audience li {
-      display: grid;
-      grid-template-columns: 18px 1fr;
-      gap: 12px;
-    }
-
-    .audience li::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--gold-light);
-      margin-top: 10px;
-    }
-
-    .audience.no li::before { background: var(--bronze); }
-
     .program {
       position: relative;
       overflow: hidden;
@@ -1481,6 +1435,85 @@
       font: 700 14px/1.45 Inter, sans-serif;
     }
 
+    /* ── AUDIENCE SECTION ─────────────────────── */
+    .audience {
+      background: linear-gradient(180deg, #02030a 0%, #060810 50%, #02030a 100%);
+      border-block: 1px solid var(--line);
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 52px;
+    }
+
+    .audience-yes,
+    .audience-no {
+      border-radius: 14px;
+      padding: 36px 32px;
+    }
+
+    .audience-yes {
+      background: rgba(12, 14, 20, 0.85);
+      border: 1px solid rgba(246, 210, 122, 0.18);
+    }
+
+    .audience-no {
+      background: rgba(10, 10, 12, 0.7);
+      border: 1px solid rgba(196, 203, 224, 0.1);
+    }
+
+    .audience-yes .label,
+    .audience-no .label {
+      margin-bottom: 24px;
+      font-size: 11px;
+    }
+
+    .audience-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .audience-list li {
+      color: rgba(248, 244, 235, 0.82);
+      font-size: 15px;
+      line-height: 1.55;
+      padding-left: 4px;
+    }
+
+    .audience-list li strong { color: var(--cream); }
+
+    .audience-list-no li {
+      color: rgba(248, 244, 235, 0.5);
+    }
+
+    .audience-quote {
+      margin: 28px 0 0;
+      padding: 20px 22px;
+      border-left: 3px solid var(--gold-light);
+      border-radius: 0 8px 8px 0;
+      background: rgba(201, 168, 76, 0.06);
+    }
+
+    .audience-quote p {
+      color: rgba(248, 244, 235, 0.72);
+      font-size: 14px;
+      line-height: 1.6;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .audience-cta {
+      text-align: center;
+      padding-top: 8px;
+    }
+
+    /* ── SPEAKERS ─────────────────────────────── */
     .speakers {
       overflow: hidden;
       background:
@@ -1765,10 +1798,13 @@
 
     .stat strong {
       display: block;
-      font: 900 62px/1 Sora, Inter, sans-serif;
+      font-family: Sora, Inter, sans-serif;
+      font-weight: 900;
+      font-size: clamp(24px, 3.8vw, 56px);
+      line-height: 1;
       color: var(--gold-light);
       margin-bottom: 12px;
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
     }
 
     .stat span {
@@ -2265,6 +2301,7 @@
         min-height: auto;
       }
       .ticket { position: relative; top: 0; }
+      .audience-grid { grid-template-columns: 1fr; gap: 20px; }
     }
 
     @media (max-width: 680px) {
@@ -2514,10 +2551,13 @@
     <section class="diagnosis">
       <div class="container split diagnosis-layout">
         <div class="diagnosis-copy reveal">
-          <div class="label">O diagnóstico</div>
+          <div class="label">Tu não chegaste aqui por acaso</div>
           <h2>Por fora, está tudo a funcionar. <span>Por dentro, tu sabes que paraste de crescer.</span></h2>
           <p class="section-lead">
-            Existem dois tipos de ambiente neste mundo. Os que te <em>motivam</em> — aquela energia que dura até segunda-feira de manhã. E os que te <em>despertam</em> — os que mexem em algo lá dentro que tu já tinhas esquecido que existia. O CO_NÉCTAR é do segundo tipo.
+            Existem dois tipos de ambiente neste mundo. Os que te <em>motivam</em> — aquela energia que dura até segunda-feira de manhã, até o despertador tocar e a vida real voltar ao centro. E os que te <em>despertam</em> — os que mexem em algo lá dentro que tu já tinhas esquecido que existia. O CO_NÉCTAR é do segundo tipo.
+          </p>
+          <p class="section-lead">
+            Não é falta de capacidade. <strong>Tu já provaste que és capaz.</strong> É que ninguém te ensinou a <strong>voltar a ti.</strong> E é exatamente isso que vai acontecer no dia 13 de junho.
           </p>
           <p class="quote-line"><span>Entra perdido.</span> <strong>Sai decidido.</strong></p>
         </div>
@@ -2546,13 +2586,13 @@
               <span class="label">O Método</span>
             </div>
             <h2 class="method-headline reveal">
-              O dia foi desenhado<br>
+              O CO_NÉCTAR é construído<br>
               em <span class="method-hl">3 movimentos.</span><br>
               <em class="method-em">Um por um.</em><br>
               Sem atalhos.
             </h2>
             <p class="method-sub reveal">
-              A narrativa deixa de ser inspiração solta e passa a ser travessia: confrontar o que trava, reconstruir o que importa e decidir o próximo passo.
+              Não vais ouvir teoria que se esquece na semana seguinte. Vais atravessar um processo: confrontar o que te trava, reencontrar o que te move, e sair com clareza do próximo passo concreto — não "um dia", mas no dia seguinte.
             </p>
             <div class="method-steps">
               <article class="method-step reveal" data-step="01">
@@ -2563,9 +2603,9 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
                     </div>
                   </div>
-                  <h3>Dar nome ao bloqueio.</h3>
-                  <p>As crenças, padrões e histórias que parecem pequenas, mas governam a tua repetição há anos.</p>
-                  <span class="method-step-out">Sais com precisão.</span>
+                  <h3>Confrontar o bloqueio.</h3>
+                  <p>As crenças que te paralisam sem que percebas. As histórias que contas a ti mesmo para justificares o que não fizeste. Os padrões que se repetem há anos.</p>
+                  <span class="method-step-out">Sais com o nome exato de cada obstáculo.</span>
                 </div>
               </article>
               <article class="method-step reveal" data-step="02">
@@ -2576,9 +2616,9 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
                   </div>
-                  <h3>Voltar ao centro.</h3>
-                  <p>Reconectar com identidade, propósito e critérios próprios, sem viver apenas pelas expectativas dos outros.</p>
-                  <span class="method-step-out">Sais com direção.</span>
+                  <h3>Reconstruir o centro.</h3>
+                  <p>Reconectas com o que realmente importa: a tua essência, o teu propósito, a identidade que ficou sepultada debaixo das expectativas dos outros e do peso do dia a dia.</p>
+                  <span class="method-step-out">Sais a saber quem és — de verdade.</span>
                 </div>
               </article>
               <article class="method-step reveal" data-step="03">
@@ -2589,9 +2629,9 @@
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     </div>
                   </div>
-                  <h3>Transformar clareza em ação.</h3>
-                  <p>Um plano simples e executável para o dia seguinte, sem esperar pela segunda-feira perfeita.</p>
-                  <span class="method-step-out">Sais com movimento.</span>
+                  <h3>Decidir e agir.</h3>
+                  <p>Não vais embora com "ideias para pensar". Vais com um plano concreto e com a energia para o executar — não daqui a um mês. Amanhã.</p>
+                  <span class="method-step-out">Sais com o próximo passo. E a coragem de o dar.</span>
                 </div>
               </article>
             </div>
@@ -2624,14 +2664,50 @@
       </div>
     </section>
 
+    <section class="audience" id="para-quem">
+      <div class="container">
+        <div class="label reveal">Para quem é este dia</div>
+        <h2 class="reveal" style="margin-bottom:48px;">Este dia é para ti — ou não é.</h2>
+        <div class="audience-grid">
+          <div class="audience-yes reveal">
+            <div class="label">Este dia é para ti se…</div>
+            <ul class="audience-list">
+              <li>✦ Sabes que tens mais dentro de ti do que aquilo que tens mostrado ao mundo.</li>
+              <li>✦ Estás cansado de começar — e cansado de não terminar.</li>
+              <li>✦ Queres largar o que te acomodou. Mesmo que doa.</li>
+              <li>✦ Estás pronto para reencontrar o teu caminho — não daqui a um ano, mas agora.</li>
+              <li>✦ Sentes que algo dentro de ti ainda não pode morrer.</li>
+              <li>✦ Queres estar numa sala cheia de pessoas que <strong>decidiram</strong> mudar — não que só falam disso.</li>
+            </ul>
+          </div>
+          <div class="audience-no reveal">
+            <div class="label">Este dia NÃO é para ti se…</div>
+            <ul class="audience-list audience-list-no">
+              <li>✕ Queres uma palestra motivacional para te sentires bem por umas horas.</li>
+              <li>✕ Procuras uma fórmula mágica sem te comprometeres com nada.</li>
+              <li>✕ Estás confortável onde estás e não queres ser confrontado.</li>
+            </ul>
+            <blockquote class="audience-quote">
+              <p>A entrada é de €38 — não porque vale pouco, mas porque o que pedimos de ti não é dinheiro. É presença e decisão.</p>
+            </blockquote>
+          </div>
+        </div>
+        <div class="audience-cta reveal">
+          <a class="btn" href="#bilhetes">Quero viver isto
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="program">
       <div class="container">
         <div class="program-head">
           <div>
             <div class="label reveal">A experiência</div>
-            <h2 class="reveal">Das 09h às 18h, o dia foi desenhado para te tirar do modo automático.</h2>
+            <h2 class="reveal">Das 09h às 18h — um dia inteiro desenhado para te tirar do modo automático.</h2>
             <p class="section-lead reveal">
-              Não é um seminário onde ouves e vais embora. É uma travessia presencial com ritmo, confronto, reconstrução e decisão.
+              Não é um seminário onde ouves e vais embora. É um ambiente onde <strong>te ativas</strong> — e onde a rede de pessoas certas pode mudar não só o teu dia, mas o teu próximo ano.
             </p>
           </div>
           <aside class="program-card reveal" aria-label="Resumo da experiência">
@@ -2657,11 +2733,11 @@
             <div class="time-body">
               <div class="time-top"><small>09h – 12h30</small><span>Manhã</span></div>
               <h3>Confrontar</h3>
-              <p>O que te trava. As crenças que te paralisam. As histórias que contas a ti mesmo para justificares o que não fizeste. Os padrões que se repetem há anos.</p>
+              <p>As crenças que te paralisam sem que percebas. As histórias que contas a ti mesmo para justificares o que não fizeste. Os padrões que se repetem há anos.</p>
             </div>
             <div class="time-outcome">
               <div class="time-outcome-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span class="time-outcome-text">Sais sabendo o nome de cada obstáculo.</span>
+              <span class="time-outcome-text">Sais sabendo exatamente o que está entre ti e a próxima versão de ti — e com o nome de cada obstáculo.</span>
             </div>
           </article>
 
@@ -2675,11 +2751,11 @@
             <div class="time-body">
               <div class="time-top"><small>13h30 – 16h30</small><span>Tarde</span></div>
               <h3>Reconstruir</h3>
-              <p>Reconectas com o que realmente importa: a tua essência, o teu propósito, a identidade que ficou sepultada debaixo das expectativas dos outros.</p>
+              <p>Reconectas com o que realmente importa: a tua essência, o teu propósito, a identidade que ficou sepultada debaixo das expectativas dos outros e do peso do dia a dia.</p>
             </div>
             <div class="time-outcome">
               <div class="time-outcome-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span class="time-outcome-text">Sais a saber quem és — de verdade.</span>
+              <span class="time-outcome-text">Sais a saber quem és — de verdade. Não quem o mundo pediu que fosses.</span>
             </div>
           </article>
 
@@ -2693,11 +2769,11 @@
             <div class="time-body">
               <div class="time-top"><small>16h30 – 18h</small><span>Final de Dia</span></div>
               <h3>Decidir</h3>
-              <p>Não vais embora com "ideias para pensar". Vais com um plano concreto e a energia para o executar — não daqui a um mês. Amanhã.</p>
+              <p>Não vais embora com "ideias para pensar". Vais com um plano concreto e com a energia para o executar — não daqui a um mês. Amanhã.</p>
             </div>
             <div class="time-outcome">
               <div class="time-outcome-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span class="time-outcome-text">Sais com o próximo passo. E a coragem de o dar.</span>
+              <span class="time-outcome-text">Sais com o próximo passo. E com a coragem de o dar.</span>
             </div>
           </article>
 
@@ -2721,9 +2797,9 @@
             <span class="speaker-kicker">Host & Criador</span>
             <div class="speaker-photo"><img src="Fotos Palestrantes/Raphael Rocha.png" alt="Raphael Rocha" loading="lazy" /></div>
             <div class="speaker-body">
-              <small>Raphael Rocha</small>
+              <small>Raphael Rocha · @rocharaphaelpt</small>
               <h3>A trajetória que dá peso à sala.</h3>
-              <p>Empresário, líder do Grupo Rocha Automóveis e IRONMAN 2025. Conduz a experiência para que clareza vire ação.</p>
+              <p>CEO do Grupo Rocha Automóveis — 6 lojas, 57 colaboradores, Top 5 que mais venderam em Portugal (2022 e 2023). IRONMAN 2025. Escritor. De entregador de caminhões a líder de um grupo de referência nacional.</p>
             </div>
           </article>
           <article class="speaker reveal">
@@ -2774,12 +2850,15 @@
             <div class="label reveal">Não é um currículo. É uma vida.</div>
             <h2 class="reveal">Não é teoria de palco. É vida construída, testada e colocada em movimento.</h2>
             <p class="section-lead reveal">
-              Eu cheguei a Portugal com 20 e poucos anos, uma mochila e uma decisão: a minha vida ia ser diferente. Comecei nas entregas. Passei pelos caminhões. Trabalhei horas que ninguém via, em dias que ninguém aplaudia.
+              Eu cheguei a Portugal com 20 e poucos anos, uma mochila e uma decisão: a minha vida ia ser diferente. Comecei nas entregas. Passei pelos caminhões. Trabalhei horas que ninguém via, em dias que ninguém aplaudia. <strong>Atravessei o oceano sem saber exatamente o que ia encontrar do outro lado — só sabia que não ia voltar atrás.</strong>
             </p>
             <p class="section-lead reveal">
-              Hoje lidero um grupo com 6 lojas e 57 pessoas. Completei um IRONMAN. Mas não te conto isto para te impressionar. Conto-te porque <strong>tudo isto só foi possível porque, um dia, decidi vencer a mim mesmo primeiro.</strong>
+              E havia uma coisa que me movia, mesmo nos dias mais difíceis: eu não ia parar até construir algo que tivesse orgulho de mostrar aos meus filhos.
             </p>
-            <p class="section-lead reveal">O CO_NÉCTAR é onde te estendo a mão para essa mesma jornada. Não de cima de um palco. De dentro de quem já caminhou o caminho.</p>
+            <p class="section-lead reveal">
+              Hoje lidero um grupo com 6 lojas e 57 pessoas. Completei um IRONMAN. Tenho família, fé, e uma vida que o rapaz das entregas nem se atrevia a sonhar. Mas não te conto isto para te impressionar. Conto-te porque <strong>tudo isto só foi possível porque, um dia, decidi vencer a mim mesmo primeiro. Porque só vence quem se vence.</strong>
+            </p>
+            <p class="section-lead reveal">O CO_NÉCTAR é onde eu te estendo a mão para essa mesma jornada. Não de cima de um palco. De dentro de quem já caminhou o caminho. Se também estás nessa jornada — bem-vindo. É aqui que a conversa acontece.</p>
             <div class="proof-signature reveal">— Raphael Rocha</div>
           </div>
         </div>
@@ -2787,7 +2866,7 @@
           <div class="stat reveal"><small>Performance comercial</small><strong>Top 5</strong><span>Lojas que mais venderam em Portugal.</span></div>
           <div class="stat reveal"><small>Estrutura empresarial</small><strong>6</strong><span>Unidades do Grupo Rocha Automóveis.</span></div>
           <div class="stat reveal"><small>Liderança diária</small><strong>57</strong><span>Colaboradores sob liderança direta.</span></div>
-          <div class="stat reveal"><small>Disciplina aplicada</small><strong>2025</strong><span>IRONMAN como prática de vida.</span></div>
+          <div class="stat reveal"><small>Disciplina aplicada</small><strong>IRONMAN</strong><span>2025 · Atleta de alto rendimento.</span></div>
         </div>
         <div class="testimonials">
           <blockquote class="testimonial reveal">
@@ -2862,10 +2941,10 @@
         <div class="label reveal">Lote fundador</div>
         <h2 class="reveal">A entrada é €38. O custo real é continuares a adiar.</h2>
         <p class="section-lead reveal">
-          O preço é acessível por decisão estratégica. A exigência não é dinheiro: é presença, honestidade e compromisso com o teu próximo passo.
+          Num único dia, sais a saber exatamente quem és, o que queres — e o próximo passo concreto para finalmente começar o que não tens parado de adiar.
         </p>
         <p class="section-lead reveal" style="margin-bottom:2rem;">
-          Num único dia, sais a saber exatamente quem és, o que queres — e o próximo passo concreto para finalmente começar o que não tens parado de adiar.
+          Não é uma promessa. É o que 7 pessoas que já viveram o caminho vão fazer contigo, das 9h às 18h, no dia 13 de junho.
         </p>
         <div class="offer-layout">
           <div class="value-list reveal">
@@ -2930,8 +3009,12 @@
             <div><p>Porque a maioria dos eventos entretém. O CO_NÉCTAR ativa. Sais com um plano escrito — não com um post para o Instagram.</p></div>
           </details>
           <details class="reveal">
+            <summary><span>"Como funciona o pagamento?"</span><span class="faq-toggle">+</span></summary>
+            <div><p>Por cartão de crédito ou débito — pagamento 100% seguro. Recebes confirmação imediata por email com todos os detalhes do evento.</p></div>
+          </details>
+          <details class="reveal">
             <summary><span>"Onde é e como chego?"</span><span class="faq-toggle">+</span></summary>
-            <div><p>Porto Inova — Centro Empresarial, Porto. Dia 13 de junho de 2026, das 09h às 18h.</p></div>
+            <div><p>Porto Inova — Centro Empresarial, Porto. Dia 13 de junho de 2026, das 09h às 18h. Estacionamento disponível no local.</p></div>
           </details>
         </div>
       </div>
@@ -2944,7 +3027,7 @@
           <h2 class="reveal">As vagas estão a desaparecer. E não é estratégia — é a capacidade real da sala.</h2>
           <p class="section-lead reveal">Depois deste dia, vais olhar para trás e dividir a tua vida em dois: o antes e o depois do 13 de junho.</p>
           <p class="section-lead reveal" style="margin-top:1rem;">A única pergunta que importa agora é:</p>
-          <h3 class="reveal" style="font-size:1.5rem;color:#C9A84C;margin:1.5rem 0;">Tu vais assistir de fora — ou viver isto connosco?</h3>
+          <h3 class="reveal" style="font-size:clamp(1.25rem,2.4vw,1.75rem);color:var(--gold-light);margin:1.5rem 0;font-weight:800;line-height:1.2;">Tu vais assistir de fora — ou viver isto connosco?</h3>
           <div class="hero-actions reveal">
             <a class="btn" href="#bilhetes">Sim, eu decido. Quero o meu lugar
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -2972,7 +3055,9 @@
   </main>
 
   <div class="mobile-cta">
-    <a class="btn" href="#bilhetes">Sim, eu decido. Quero o meu lugar →</a>
+    <a class="btn" href="#bilhetes">Sim, eu decido. Quero o meu lugar
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-left:6px;"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
   </div>
 
   <footer>
