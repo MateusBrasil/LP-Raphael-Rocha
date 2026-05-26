@@ -1739,12 +1739,12 @@
       display: grid;
       grid-template-columns: minmax(380px, 0.88fr) minmax(0, 1fr);
       gap: 48px;
-      align-items: center;
+      align-items: start;
     }
 
     .proof-portrait {
       position: relative;
-      min-height: 680px;
+      min-height: 720px;
       border: 1px solid rgba(246, 210, 122, 0.22);
       border-radius: var(--radius);
       overflow: hidden;
@@ -1756,16 +1756,16 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(2, 3, 10, 0.88) 100%);
+      background: linear-gradient(180deg, transparent 50%, rgba(2, 3, 10, 0.88) 100%);
       pointer-events: none;
     }
 
     .proof-portrait img {
       width: 100%;
       height: 100%;
-      min-height: 680px;
+      min-height: 720px;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 8%;
       filter: saturate(0.96) contrast(1.04);
     }
 
@@ -2330,10 +2330,11 @@
         min-height: 540px;
       }
       .proof-portrait {
-        min-height: 560px;
+        min-height: 480px;
       }
       .proof-portrait img {
-        min-height: 560px;
+        min-height: 480px;
+        object-position: center 12%;
       }
       .program-head {
         grid-template-columns: 1fr;
@@ -2370,11 +2371,13 @@
     }
 
     @media (max-width: 680px) {
-      body { padding-bottom: 76px; }
+      /* Fix 1+2: Mobile CTA visible + safe-area notch support */
+      body { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
       .topline-inner { padding: 10px 14px; }
       .brand span, .topline .btn { display: none; }
       .brand img { height: 58px; }
-      /* Poster Split: photo on top, text below */
+
+      /* Hero */
       .hero {
         flex-direction: column;
         align-items: stretch;
@@ -2383,11 +2386,7 @@
       .hero::before { display: none; }
       .hero::after {
         top: 45%;
-        background: linear-gradient(180deg,
-          rgba(2, 3, 10, 0) 0%,
-          rgba(2, 3, 10, 0.92) 18%,
-          rgba(2, 3, 10, 0.99) 100%
-        );
+        background: linear-gradient(180deg, rgba(2,3,10,0) 0%, rgba(2,3,10,0.92) 18%, rgba(2,3,10,0.99) 100%);
       }
       .hero-photo-mobile {
         display: block;
@@ -2406,7 +2405,7 @@
         position: absolute;
         inset: auto 0 0 0;
         height: 55%;
-        background: linear-gradient(180deg, transparent, rgba(2, 3, 10, 0.97));
+        background: linear-gradient(180deg, transparent, rgba(2,3,10,0.97));
         pointer-events: none;
       }
       .hero-inner {
@@ -2414,131 +2413,147 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 0 16px 32px;
+        padding: 0 16px 28px;
         gap: 0;
       }
       .hero-proof, .hero-proof-strip { display: none; }
-      h1 { font-size: clamp(36px, 11vw, 54px); }
-      h2 { font-size: clamp(32px, 11vw, 48px); }
-      .hero-sub { font-size: 16px; margin-top: 12px; }
-      .hero-actions { margin-top: 18px; }
-      .hero-actions .btn { width: 100%; }
-      .hero-trust { margin-top: 8px; }
-      .diagnosis::before {
-        top: 22%;
-        font-size: 82px;
+      h1 { font-size: clamp(32px, 10vw, 48px); }
+      h2 { font-size: clamp(28px, 9vw, 42px); }
+      .hero-sub { font-size: 15px; line-height: 1.6; margin-top: 10px; }
+
+      /* Fix 14: Hero buttons — stack vertically, full width */
+      .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 16px;
       }
-      .diagnosis::after {
-        background-position: center 18%, center;
+      .hero-actions .btn,
+      .hero-actions a { width: 100%; justify-content: center; }
+
+      /* Fix 9: Hero trust centred */
+      .hero-trust {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 1.5;
       }
-      .diagnosis-copy h2 span {
-        margin-top: 6px;
-      }
-      .quote-line {
-        align-items: flex-start;
-        border-radius: 10px;
+
+      /* Diagnosis */
+      .diagnosis::before { top: 22%; font-size: 82px; }
+      .diagnosis::after { background-position: center 18%, center; }
+      .diagnosis-copy h2 span { margin-top: 6px; }
+
+      /* Fix 4: Section lead smaller on mobile */
+      .section-lead {
         font-size: 16px;
+        line-height: 1.65;
+        margin-top: 16px;
       }
-      .diagnosis-panel-head {
-        padding: 22px 20px;
-      }
+      .quote-line { align-items: flex-start; border-radius: 10px; font-size: 16px; }
+      .diagnosis-panel-head { padding: 22px 20px; }
       .check {
         grid-template-columns: 38px 1fr;
         gap: 14px;
-        padding: 22px 20px;
+        padding: 20px 18px;
       }
-      .check:hover {
-        transform: none;
-      }
-      .check b {
-        width: 32px;
-        height: 32px;
-      }
-      .check strong {
-        font-size: 17px;
-      }
-      .check span {
-        font-size: 15px;
-      }
-      .method .container {
-        max-width: none;
-        padding-inline: 20px;
-      }
-      .method-layout {
-        grid-template-columns: 1fr;
-        gap: 44px;
-      }
-      .method-visual {
-        order: -1;
-      }
-      .method-stage {
-        max-width: 340px;
-        margin: 0 auto;
-      }
-      .method-ring-2,
-      .method-ring-3,
-      .method-spark {
-        display: none;
-      }
-      .method-art {
-        border-radius: 0;
-      }
-      .cards-3,
-      .timeline,
-      .proof-grid,
-      .testimonials,
-      .speaker-grid,
-      .audience-grid {
+      .check:hover { transform: none; }
+      .check b { width: 32px; height: 32px; }
+      .check strong { font-size: 16px; }
+      .check span { font-size: 14px; }
+
+      /* Method */
+      .method .container { max-width: none; padding-inline: 16px; }
+      .method-layout { grid-template-columns: 1fr; gap: 40px; }
+      .method-visual { order: -1; }
+      .method-stage { max-width: 320px; margin: 0 auto; }
+      .method-ring-2, .method-ring-3, .method-spark { display: none; }
+      .method-art { border-radius: 0; }
+
+      /* Single-column grids */
+      .cards-3, .timeline, .proof-grid, .testimonials, .speaker-grid, .audience-grid {
         grid-template-columns: 1fr;
       }
-      .speaker.featured {
-        min-height: 520px;
-      }
+
+      /* Fix 8: Audience cards tighter padding */
+      .audience-yes, .audience-no { padding: 24px 20px; }
+
+      /* Speakers */
+      .speaker.featured { min-height: 480px; }
       .speaker-photo { aspect-ratio: 1 / 1.05; }
-      .proof-copy h2 {
-        font-size: clamp(32px, 10vw, 48px);
+
+      /* Proof / Raphael */
+      .proof-copy h2 { font-size: clamp(28px, 9vw, 42px); }
+      .proof-grid { margin-top: 28px; }
+      .proof-portrait { min-height: 360px; }
+      .proof-portrait img { min-height: 360px; object-position: center 10%; }
+
+      /* Fix 11: Stats — compact on mobile */
+      .stat { padding: 22px 16px 18px; }
+      .stat strong { font-size: clamp(22px, 8vw, 38px); letter-spacing: 0; }
+      .stat small { font-size: 9px; }
+      .stat span { font-size: 12px; line-height: 1.4; }
+
+      /* Fix 12: Testimonials tighter */
+      .testimonial { padding: 20px 18px 18px; }
+
+      /* Final */
+      .final { min-height: 580px; padding: 72px 16px; }
+      .final h2 { font-size: clamp(32px, 11vw, 50px); }
+      .final-panel { padding: 20px 18px; }
+
+      /* Fix 6: Container padding reduced */
+      .container { padding: 60px 16px; }
+
+      /* Program */
+      .program::before { top: 9%; right: -22vw; font-size: 72px; }
+      .program::after { top: 20%; }
+      .program-card { padding: 22px 18px; }
+      /* Fix 10: Dead grid rule removed — dl is now flex */
+      .program-card dl { gap: 0; }
+
+      /* Fix 7: Timeline heading smaller */
+      .time-block { min-height: 300px; }
+      .time-block h3 { font-size: 26px; }
+      .time-head { padding: 20px 20px 0; }
+      .time-body { padding: 0 20px; }
+      .time-outcome { padding: 14px 20px 20px; }
+      .time-top { margin-bottom: 12px; }
+
+      /* Fix 5: Value row flex column so price stays readable */
+      .value-row {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 16px 18px;
       }
-      .proof-grid {
-        margin-top: 34px;
+      .value-price { align-self: flex-start; font-size: 14px; }
+      .value-row-total .value-price,
+      .value-row-cta .value-cta-price { font-size: 18px; }
+
+      /* Fix 3: FAQ summary smaller on mobile */
+      summary {
+        font-size: 16px;
+        line-height: 1.45;
+        gap: 14px;
       }
-      .proof-portrait {
-        min-height: 420px;
+      details { padding: 18px 0; }
+      details p { font-size: 15px; }
+
+      /* Fix 13: Footer centred on mobile */
+      footer .container-foot {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 6px;
       }
-      .proof-portrait img {
-        min-height: 420px;
+
+      /* Fix 1: Show mobile CTA bar + safe area */
+      .mobile-cta {
+        display: block;
+        padding: 10px 14px;
+        padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
       }
-      .final {
-        min-height: 620px;
-        padding: 86px 16px;
-      }
-      .final h2 {
-        font-size: clamp(38px, 13vw, 58px);
-      }
-      .final-panel {
-        padding: 22px;
-      }
-      .container { padding: 78px 16px; }
-      .program::before {
-        top: 9%;
-        right: -22vw;
-        font-size: 90px;
-      }
-      .program::after {
-        top: 20%;
-      }
-      .program-card {
-        padding: 22px;
-      }
-      .program-card dl {
-        grid-template-columns: 1fr;
-      }
-      .time-block { min-height: 320px; }
-      .time-head { padding: 22px 22px 0; }
-      .time-body { padding: 0 22px; }
-      .time-outcome { padding: 16px 22px 22px; }
-      .time-top { margin-bottom: 14px; }
-      .value-row { grid-template-columns: 1fr; }
-      .mobile-cta { display: none; }
+      .mobile-cta .btn { width: 100%; }
     }
   </style>
   <script type="application/ld+json">
@@ -3052,7 +3067,7 @@
             <small>Acesso antecipado</small>
             <div class="price">€38</div>
             <p>Disponível até 31 de maio de 2026 ou enquanto houver lugares do lote fundador.</p>
-            <a class="btn" href="#bilhetes">Quero o meu lugar
+            <a class="btn" href="https://tally.so/r/yPjMQd" target="_blank" rel="noopener">Quero o meu lugar
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
             <div class="guarantee">
