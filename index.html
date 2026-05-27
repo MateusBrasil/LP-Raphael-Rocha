@@ -2143,11 +2143,8 @@
       align-items: center;
       text-align: left;
       padding: 110px 20px;
-      background:
-        radial-gradient(ellipse at 74% 36%, rgba(246, 210, 122, 0.16), transparent 34%),
-        radial-gradient(ellipse at 20% 92%, rgba(122, 75, 19, 0.22), transparent 42%),
-        linear-gradient(180deg, #02030a 0%, #06050a 58%, #02030a 100%);
-      border-top: 1px solid var(--line);
+      background: #f5f1eb;
+      border-top: 1px solid rgba(2, 3, 10, 0.08);
       overflow: hidden;
       isolation: isolate;
     }
@@ -2160,11 +2157,11 @@
       transform: translateX(-50%);
       z-index: -2;
       color: transparent;
-      -webkit-text-stroke: 1px rgba(246, 210, 122, 0.12);
+      -webkit-text-stroke: 1px rgba(2, 3, 10, 0.06);
       font: 800 clamp(96px, 18vw, 270px)/1 Sora, Inter, sans-serif;
       letter-spacing: 0;
       white-space: nowrap;
-      opacity: 0.62;
+      opacity: 0.45;
     }
 
     .final::after {
@@ -2174,9 +2171,8 @@
       z-index: -1;
       pointer-events: none;
       background:
-        linear-gradient(90deg, transparent, rgba(246, 210, 122, 0.14), transparent),
-        repeating-linear-gradient(90deg, transparent 0 92px, rgba(246, 210, 122, 0.035) 93px, transparent 94px);
-      opacity: 0.32;
+        repeating-linear-gradient(90deg, transparent 0 92px, rgba(2, 3, 10, 0.025) 93px, transparent 94px);
+      opacity: 0.5;
     }
 
     .final-inner {
@@ -2190,14 +2186,27 @@
     }
 
     .final h2 {
-      max-width: 650px;
-      font-size: clamp(44px, 6vw, 86px);
-      line-height: 0.98;
+      max-width: 860px;
+      font-size: clamp(26px, 3vw, 44px);
+      line-height: 1.1;
+      color: #02030a;
     }
 
     .final .section-lead {
       max-width: 580px;
-      color: rgba(248, 244, 235, 0.74);
+      color: rgba(2, 3, 10, 0.62);
+    }
+
+    .final .label {
+      color: var(--gold);
+    }
+
+    .final .label::before {
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .final .hero-trust {
+      color: rgba(2, 3, 10, 0.45);
     }
 
     .final .hero-actions {
@@ -2205,10 +2214,10 @@
     }
 
     .final-panel {
-      border: 1px solid rgba(246, 210, 122, 0.24);
+      border: 1px solid rgba(246, 210, 122, 0.3);
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(21, 24, 32, 0.72), rgba(6, 7, 10, 0.92));
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 241, 191, 0.1);
+      background: linear-gradient(160deg, #0e1018, #02030a);
+      box-shadow: 0 24px 72px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 241, 191, 0.08);
       padding: 28px;
     }
 
@@ -2233,6 +2242,88 @@
     .final-panel-row strong {
       color: #fff;
       text-align: right;
+    }
+
+    /* ── ESPAÇO KIDS ──────────────────────────── */
+    .kids-space {
+      background: linear-gradient(180deg, #02030a 0%, #07080f 50%, #02030a 100%);
+      border-block: 1px solid var(--line);
+    }
+
+    .kids-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 0.52fr) minmax(0, 1fr);
+      gap: clamp(36px, 6vw, 88px);
+      align-items: center;
+    }
+
+    .kids-photo {
+      margin: 0;
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(246,210,122,0.12);
+    }
+
+    .kids-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.04) saturate(0.88);
+    }
+
+    .kids-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(246,210,122,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .kids-copy h2 {
+      max-width: 540px;
+    }
+
+    .kids-copy .section-lead {
+      max-width: 520px;
+    }
+
+    .kids-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .kids-tags span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      border: 1px solid rgba(246,210,122,0.22);
+      border-radius: 999px;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: rgba(246,210,122,0.05);
+    }
+
+    .kids-tags span::before {
+      content: "✦";
+      font-size: 9px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .kids-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .kids-photo {
+        max-height: 340px;
+      }
     }
 
     footer {
@@ -2494,7 +2585,7 @@
 
       /* Final */
       .final { min-height: 580px; padding: 72px 16px; }
-      .final h2 { font-size: clamp(32px, 11vw, 50px); }
+      .final h2 { font-size: clamp(22px, 7vw, 36px); }
       .final-panel { padding: 20px 18px; }
 
       /* Fix 6: Container padding reduced */
@@ -3033,6 +3124,35 @@
       </div>
     </section>
 
+    <section class="kids-space">
+      <div class="container">
+        <div class="kids-inner">
+          <figure class="kids-photo reveal" data-reveal="left">
+            <img src="Espaço Kids.jpeg" alt="Crianças no Espaço Kids do CO_NÉCTAR" width="600" height="750" loading="lazy" decoding="async" />
+          </figure>
+          <div class="kids-copy">
+            <div class="label reveal">Para toda a família</div>
+            <h2 class="reveal">Os teus filhos não ficam em casa. Criámos um Espaço Kids.</h2>
+            <p class="section-lead reveal">
+              Não há desculpas para ficar de fora. O CO_NÉCTAR pensou em toda a família, porque a família é um dos pilares deste movimento.
+            </p>
+            <p class="section-lead reveal">
+              O Espaço Kids é totalmente intencional: atividades, dinâmicas e momentos desenhados para que as crianças também cresçam enquanto tu te transformas na sala ao lado. Crescimento não tem idade.
+            </p>
+            <p class="section-lead reveal">
+              Traz quem amas. Nós tratamos do resto.
+            </p>
+            <div class="kids-tags reveal">
+              <span>Atividades guiadas</span>
+              <span>Espaço seguro</span>
+              <span>Monitores presentes</span>
+              <span>Incluído no bilhete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="offer" id="bilhetes">
       <div class="container">
         <div class="label reveal">Lote fundador</div>
@@ -3057,7 +3177,7 @@
             <small>Acesso antecipado</small>
             <div class="price">€38</div>
             <p>Disponível até 31 de maio de 2026 ou enquanto houver lugares do lote fundador.</p>
-            <a class="btn" href="https://tally.so/r/yPjMQd" target="_blank" rel="noopener">Quero o meu lugar
+            <a class="btn" href="#decisao-final">Quero o meu lugar
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
             <div class="guarantee">
@@ -3124,8 +3244,8 @@
           <h2 class="reveal">As vagas estão a desaparecer. E não é estratégia, é a capacidade real da sala.</h2>
           <p class="section-lead reveal">Depois deste dia, vais olhar para trás e dividir a tua vida em dois: o antes e o depois do 13 de junho.</p>
           <p class="section-lead reveal" style="margin-top:1rem;">A única pergunta que importa agora é:</p>
-          <h3 class="reveal" style="font-size:clamp(1.25rem,2.4vw,1.75rem);color:var(--gold-light);margin:1.5rem 0;font-weight:800;line-height:1.2;">Tu vais assistir de fora, ou viver isto connosco?</h3>
-          <div class="hero-actions reveal">
+          <h3 class="reveal" style="font-size:clamp(1.25rem,2.4vw,1.75rem);color:var(--gold);margin:1.5rem 0;font-weight:800;line-height:1.2;">Tu vais assistir de fora, ou viver isto connosco?</h3>
+          <div class="hero-actions reveal" id="decisao-final">
             <a class="btn" href="https://tally.so/r/yPjMQd" target="_blank" rel="noopener">Sim, eu decido. Quero o meu lugar
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
